@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'LifeCycleHooks';
+
+  userEnteredValue: string = ''
+
+  submitName(inputValue: HTMLInputElement) {
+    this.userEnteredValue = inputValue.value;
+  }
 }
