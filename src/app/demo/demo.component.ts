@@ -1,17 +1,22 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.css']
 })
-export class DemoComponent {
+export class DemoComponent implements OnInit {
 
   @Input() userInput?: string = "shiyam";
 
   constructor() {
     console.log("Constructed called");
-    console.log(this.userInput);
+    console.log(" User Value", this.userInput)
+  }
+
+  ngOnInit(): void {
+    console.log("NgOnInit in executed")
+    console.log(" User Value", this.userInput)
   }
 
 }
