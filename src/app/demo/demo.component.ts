@@ -1,11 +1,11 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.css']
 })
-export class DemoComponent implements OnInit, OnChanges {
+export class DemoComponent implements OnInit, OnChanges, DoCheck {
 
   @Input() userInput?: string = "shiyam";
 
@@ -17,6 +17,7 @@ export class DemoComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     //Its executed initially and well as on and Inputboudn property chnages
+    //Its the only lifecycle that accepts Argument
     console.log("ngOnChanges is called")
     console.log(changes)
   }
@@ -25,6 +26,10 @@ export class DemoComponent implements OnInit, OnChanges {
     // Its executed only once, its the best place to initilized the values
     console.log("NgOnInit in executed")
     // console.log(" User Value", this.userInput)
+  }
+
+  ngDoCheck(): void {
+    console.log("NgDoCheck is called")
   }
 
 }
