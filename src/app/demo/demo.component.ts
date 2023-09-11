@@ -1,11 +1,11 @@
-import { AfterContentChecked, AfterContentInit, AfterViewInit, Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.css']
 })
-export class DemoComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit {
+export class DemoComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked, AfterViewInit, AfterViewChecked {
 
   @Input() userInput?: string = "shiyam";
 
@@ -47,5 +47,11 @@ export class DemoComponent implements OnInit, OnChanges, DoCheck, AfterContentIn
     // Its called when the componenet view and its child views are fully loaded and it executes ony for the first time.
     console.log("ngAfterViewInit is called !")
   }
+
+  ngAfterViewChecked() {
+    // Its called on every chnage detection cycle, when ever there is a change in the view this hook is called
+    console.log("ngAfterViewChecked is called !")
+  }
+
 
 }
