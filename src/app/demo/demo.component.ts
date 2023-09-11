@@ -1,11 +1,11 @@
-import { Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterContentInit, Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.css']
 })
-export class DemoComponent implements OnInit, OnChanges, DoCheck {
+export class DemoComponent implements OnInit, OnChanges, DoCheck, AfterContentInit {
 
   @Input() userInput?: string = "shiyam";
 
@@ -29,7 +29,13 @@ export class DemoComponent implements OnInit, OnChanges, DoCheck {
   }
 
   ngDoCheck(): void {
+    // Its called everytime when ever there is a change detection
     console.log("NgDoCheck is called")
+  }
+
+  ngAfterContentInit(): void {
+    // its called when the if projeced contented or not it is executed and its called only once
+    console.log("NgAfterContentInit is called !")
   }
 
 }
