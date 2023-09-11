@@ -1,11 +1,11 @@
-import { AfterContentInit, Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { AfterContentChecked, AfterContentInit, Component, DoCheck, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
   styleUrls: ['./demo.component.css']
 })
-export class DemoComponent implements OnInit, OnChanges, DoCheck, AfterContentInit {
+export class DemoComponent implements OnInit, OnChanges, DoCheck, AfterContentInit, AfterContentChecked {
 
   @Input() userInput?: string = "shiyam";
 
@@ -36,6 +36,11 @@ export class DemoComponent implements OnInit, OnChanges, DoCheck, AfterContentIn
   ngAfterContentInit(): void {
     // its called when the if projeced contented or not it is executed and its called only once
     console.log("NgAfterContentInit is called !")
+  }
+
+  ngAfterContentChecked(): void {
+    // Its called on every chnage detection cycle, when ever there is a chnage in the projected content this hook is called
+    console.log("ngAfterContentChecked is called !")
   }
 
 }
